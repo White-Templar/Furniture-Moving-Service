@@ -8,18 +8,6 @@ Simple Flutter app showcasing:
 - Two-page navigation via Drawer and BottomNavigationBar
 - Staggered grid using `flutter_staggered_grid_view`
 
-## Project Structure
-
-```
-lib/
-  models/            // Plain data types (e.g., MovingServiceItem)
-  services/          // Simple repositories (fake/local data only)
-  widgets/           // Reusable UI components (PrimaryButton)
-  views/
-    home/            // Home shell for Material and Cupertino
-    screens/         // Simple pages (Hello, Counter)
-  main.dart          // App root and platform switcher
-```
 
 Why this layout:
 - Separation by role keeps files short and easy to find.
@@ -38,6 +26,21 @@ flutter pub get
 flutter run
 ```
 
+## Project Structure
+
+```
+lib/
+  models/            // Plain data types (e.g., MovingServiceItem)
+  services/          // Simple repositories (fake/local data only)
+  widgets/           // Reusable UI components (PrimaryButton)
+  views/
+    home/            // Home shell for Material and Cupertino
+    screens/         // Pages (Hello, Counter, SecondActivity)
+  theme/            // App theming and styles
+  utils/            // Helper functions and constants
+  main.dart         // App root and platform switcher
+```
+
 ## Widget Tree (high level)
 
 ```
@@ -45,16 +48,18 @@ MaterialApp
  └─ RootSwitcher (Stateful)
      ├─ HomeMaterial (Scaffold)
      │   ├─ AppBar(actions: toggle platform)
-     │   ├─ Drawer → (Dashboard | Hello | Counter)
+     │   ├─ Drawer → (Dashboard | Hello | Counter | Layouts)
      │   ├─ Body: Indexed pages
      │   │   ├─ _HomeDashboard → MasonryGridView(ServiceCard + PrimaryButton)
      │   │   ├─ HelloPage (Stateless) → PrimaryButton
-     │   │   └─ CounterPage (Stateful) → PrimaryButton
-     │   └─ BottomNavigationBar (3 tabs)
+     │   │   ├─ CounterPage (Stateful) → PrimaryButton
+     │   │   └─ SecondActivityPage (Stateful) → Layout Examples
+     │   └─ BottomNavigationBar (4 tabs)
      └─ HomeCupertino (CupertinoTabScaffold)
          ├─ Tab 0: List of services + PrimaryButton
          ├─ Tab 1: HelloPage(cupertino)
-         └─ Tab 2: CounterPage(cupertino)
+         ├─ Tab 2: CounterPage(cupertino)
+         └─ Tab 3: SecondActivityPage(cupertino)
 ```
 
 Refactoring example:
