@@ -40,7 +40,6 @@ flutter run
 
 ## Widget Tree (high level)
 
-```
 MaterialApp
  └─ RootSwitcher (Stateful)
      ├─ HomeMaterial (Scaffold)
@@ -55,7 +54,6 @@ MaterialApp
          ├─ Tab 0: List of services + PrimaryButton
          ├─ Tab 1: HelloPage(cupertino)
          └─ Tab 2: CounterPage(cupertino)
-```
 
 Refactoring example:
 - The dashboard view was split into `_HomeDashboard` and `PrimaryButton` to keep each widget small and reusable.
